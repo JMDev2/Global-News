@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
 //                intent.putExtra("sports", mCategory.getText().toString());
-//                startActivity(intent);
+                startActivity(intent);
             }
         });
     }

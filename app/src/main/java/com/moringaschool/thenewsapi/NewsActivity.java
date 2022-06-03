@@ -18,8 +18,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsActivity extends AppCompatActivity {
-    @BindView(R.id.textCat)
-    EditText mText;
 
 
     @Override
