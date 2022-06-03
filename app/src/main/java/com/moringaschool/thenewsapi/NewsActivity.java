@@ -44,8 +44,8 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
         //Fetching user input from the MainActivity
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("sport");
-        mText.setText("Welcome " +name+ "!");
+//        Intent intent = getIntent();
+//        String name = intent.getStringExtra("sport");
+//        mText.setText("Welcome " +name+ "!");
     }
 }

@@ -6,29 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/submitBtn"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:text="Button"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="437dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsCategory"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newss" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="386dp"
+        android:fontFamily="@font/amarante"
+        android:text="Welcome to the Global News"
+        android:textColor="#040303"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/newsCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/categorySearch"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
         android:ems="10"
+        android:hint="Enter News Category (Sport)"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Name"
+        android:singleLine="false"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="169dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="229dp"
+        android:backgroundTint="#6CA3AA"
+        android:text="Submit"
+        app:cornerRadius="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categorySearch"
+        app:layout_constraintVertical_bias="0.705" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">The News API</string>
+    <string name="category">Enter News Category (Sports)</string>
 </resources>
