@@ -29,6 +29,7 @@ public class NewsActivity extends AppCompatActivity {
     private List<Datum> mList;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerview;
     @BindView(R.id.progressbar) ProgressBar mProgressBar;
+    @BindView(R.id.errorTextView) TextView mErrorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +51,32 @@ public class NewsActivity extends AppCompatActivity {
                     NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this, mList);
                     mRecyclerview.setAdapter(newsAdapter);
                     mRecyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                    showNews();
+                }else{
+                    showUnsuccessfulMessage();
                 }
             }
 
             @Override
             public void onFailure(Call<TheNews> call, Throwable t) {
-
+                hideProgressBar();
+                showFailureMessage();
             }
         });
 
+    }
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("No News match!");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+    private void showNews() {
+        mRecyclerview.setVisibility(View.VISIBLE);
     }
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
