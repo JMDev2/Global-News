@@ -70,6 +70,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="TextView"
+                android:autoLink="web"
                 app:layout_constraintBottom_toTopOf="@+id/newsSource"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"

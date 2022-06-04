@@ -1,6 +1,7 @@
 package com.moringaschool.thenewsapi;
 
 import android.content.Context;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         @BindView(R.id.newsPublished) TextView mPublished;
         @BindView(R.id.viewUrl) TextView mUrl;
 
+
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -65,6 +67,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             Picasso.get().load(datum.getImageUrl()).into(mImage);
             mDescription.setText(datum.getDescription());
             mUrl.setText(datum.getUrl());
+            mUrl.setMovementMethod(LinkMovementMethod.getInstance());
             mSource.setText(datum.getSource());
             mPublished.setText(datum.getPublishedAt());
 
