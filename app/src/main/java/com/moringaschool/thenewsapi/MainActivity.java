@@ -12,9 +12,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.submitBtn) Button mButton;
-//    @BindView(R.id.textCat)
-//    EditText mCategory;
+    @BindView(R.id.submitBtn)
+    Button mButton;
+    @BindView(R.id.categorySearch)
+    EditText mCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +27,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-//                intent.putExtra("sports", mCategory.getText().toString());
+                intent.putExtra("sports", mCategory.getText().toString());
                 startActivity(intent);
             }
         });
+    }
+
+    public void onResume() {
+
+
+        super.onResume();
     }
 }

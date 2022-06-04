@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2015" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_news.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/newsrecyclerview.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/newsrecyclerview.xml" value="0.49925925925925924" />
       </map>
     </option>
   </component>
