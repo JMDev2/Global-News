@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.moringaschool.thenewsapi.models.Datum;
@@ -26,6 +28,7 @@ public class NewsActivity extends AppCompatActivity {
     private NewsAdapter newsAdapter;
     private List<Datum> mList;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerview;
+    @BindView(R.id.progressbar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class NewsActivity extends AppCompatActivity {
         call.enqueue(new Callback<TheNews>() {
             @Override
             public void onResponse(Call<TheNews> call, Response<TheNews> response) {
+                hideProgressBar();
                 if(response.isSuccessful()){
                     mList = response.body().getData();
 
@@ -55,5 +59,8 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }
