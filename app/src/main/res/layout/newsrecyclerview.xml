@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="343dp"
         android:layout_height="300dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="571dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="4dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="134dp"
                 android:layout_height="137dp"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toTopOf="@+id/newsSource"
                 app:layout_constraintEnd_toStartOf="@+id/newsDescription"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,21 +61,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/viewUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/newsSource"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.58000004" />
 
             <TextView
                 android:id="@+id/newsSource"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginEnd="87dp"
                 android:layout_marginBottom="16dp"
                 android:text="TextView"
+                android:textColor="#2196F3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/newsPublished"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/viewUrl" />
 
             <TextView
                 android:id="@+id/newsPublished"

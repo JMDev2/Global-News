@@ -52,6 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         @BindView(R.id.newsDescription) TextView mDescription;
         @BindView(R.id.newsSource) TextView mSource;
         @BindView(R.id.newsPublished) TextView mPublished;
+        @BindView(R.id.viewUrl) TextView mUrl;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +64,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             mTitle.setText(datum.getTitle());
             Picasso.get().load(datum.getImageUrl()).into(mImage);
             mDescription.setText(datum.getDescription());
+            mUrl.setText(datum.getUrl());
             mSource.setText(datum.getSource());
             mPublished.setText(datum.getPublishedAt());
 
