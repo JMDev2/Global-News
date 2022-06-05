@@ -35,7 +35,7 @@ public class NewsDetailsFragment extends Fragment {
     @BindView(R.id.fragmentTitle) TextView mTitle;
     @BindView(R.id.fragmentNews) TextView mNews;
     @BindView(R.id.fragmentSite) TextView mSite;
-    @BindView(R.id.imageView) ImageView mImage;
+    @BindView(R.id.fragmentImageView) ImageView mImage;
 
     private Datum mDatum;
 
