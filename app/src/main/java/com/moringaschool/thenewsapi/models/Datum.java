@@ -6,6 +6,9 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 @Generated("jsonschema2pojo")
 public class Datum {
 
@@ -42,9 +45,9 @@ public class Datum {
     @SerializedName("categories")
     @Expose
     private List<String> categories = null;
-    @SerializedName("relevance_score")
-    @Expose
-    private Object relevanceScore;
+//    @SerializedName("relevance_score")
+//    @Expose
+//    private Object relevanceScore;
 
     /**
      * No args constructor for use in serialization
@@ -81,7 +84,7 @@ public class Datum {
         this.publishedAt = publishedAt;
         this.source = source;
         this.categories = categories;
-        this.relevanceScore = relevanceScore;
+//        this.relevanceScore = relevanceScore;
     }
 
     public String getUuid() {
@@ -164,20 +167,20 @@ public class Datum {
         this.source = source;
     }
 
-    public List<String> getCategories() {
-        return categories;
-    }
+//    public Datum getCategories() {
+//        return categories;
+//    }
 
     public void setCategories(List<String> categories) {
         this.categories = categories;
     }
 
-    public Object getRelevanceScore() {
-        return relevanceScore;
-    }
+//    public Object getRelevanceScore() {
+//        return relevanceScore;
+//    }
 
-    public void setRelevanceScore(Object relevanceScore) {
-        this.relevanceScore = relevanceScore;
-    }
+//    public void setRelevanceScore(Object relevanceScore) {
+//        this.relevanceScore = relevanceScore;
+//    }
 
 }

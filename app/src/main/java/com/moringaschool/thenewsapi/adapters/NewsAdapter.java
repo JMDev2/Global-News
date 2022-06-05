@@ -1,6 +1,8 @@
 package com.moringaschool.thenewsapi.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcel;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.models.Datum;
+import com.moringaschool.thenewsapi.ui.NewsDetailsActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -47,7 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return dataList.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+    public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.newsTitle) TextView mTitle;
         @BindView(R.id.imageView) ImageView mImage;
         @BindView(R.id.newsDescription) TextView mDescription;
@@ -58,9 +63,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
-
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
         public void bindNews(Datum datum){
             mTitle.setText(datum.getTitle());
@@ -70,6 +75,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             mUrl.setMovementMethod(LinkMovementMethod.getInstance());
             mSource.setText(datum.getSource());
             mPublished.setText(datum.getPublishedAt());
+
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, NewsDetailsActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("news", Parcels.wrap(dataList));
+            mContext.startActivity(intent);
 
         }
     }
