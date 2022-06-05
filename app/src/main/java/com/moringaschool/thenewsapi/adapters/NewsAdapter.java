@@ -1,4 +1,4 @@
-package com.moringaschool.thenewsapi;
+package com.moringaschool.thenewsapi.adapters;
 
 import android.content.Context;
 import android.text.method.LinkMovementMethod;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.models.Datum;
-import com.moringaschool.thenewsapi.models.TheNews;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
