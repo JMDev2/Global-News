@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/layout/activity_news.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_news_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_news_details.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_news_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_news_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/newsrecyclerview.xml" value="0.22" />
       </map>
     </option>

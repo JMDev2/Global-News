@@ -36,6 +36,7 @@ public class NewsDetailsFragment extends Fragment {
     @BindView(R.id.fragmentNews) TextView mNews;
     @BindView(R.id.fragmentSite) TextView mSite;
     @BindView(R.id.fragmentImageView) ImageView mImage;
+    @BindView(R.id.fragmentUrl) TextView mUrl;
 
     private Datum mDatum;
 
@@ -84,6 +85,7 @@ public class NewsDetailsFragment extends Fragment {
         mTitle.setText(mDatum.getTitle());
         mNews.setText(mDatum.getDescription());
         mSite.setText(mDatum.getSource());
+        mUrl.setText(mDatum.getUrl());
 
 
 
