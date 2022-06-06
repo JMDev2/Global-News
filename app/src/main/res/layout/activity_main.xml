@@ -29,7 +29,7 @@
         android:layout_marginBottom="386dp"
         android:fontFamily="@font/amarante"
         android:text="Welcome to the Global News"
-        android:textColor="#040303"
+        android:textColor="#FDFCFC"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
