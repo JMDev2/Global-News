@@ -51,9 +51,24 @@
                 android:paddingRight="30dp">
 
                 <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Explore Further..."
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
                     android:id="@+id/fragmentNews"
                     android:layout_width="347dp"
-                    android:layout_height="176dp"
+                    android:layout_height="129dp"
                     android:layout_marginBottom="10dp"
 
                     android:drawablePadding="4dp"
@@ -67,16 +82,16 @@
                     android:id="@+id/fragmentUrl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:autoLink="web"/>
+                    android:autoLink="web"
+                    android:text="TextView" />
 
                 <TextView
                     android:id="@+id/fragmentSite"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:autoLink="web"/>
+                    android:layout_marginTop="20dp"
+                    android:autoLink="web"
+                    android:text="TextView" />
 
 
             </LinearLayout>
