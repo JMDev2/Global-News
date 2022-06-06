@@ -1,6 +1,8 @@
 package com.moringaschool.thenewsapi.ui;
 
+import android.content.Intent;
 import android.icu.util.ULocale;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -30,13 +32,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NewsDetailsFragment extends Fragment {
+public class NewsDetailsFragment extends Fragment implements View.OnClickListener{
 
     @BindView(R.id.fragmentTitle) TextView mTitle;
     @BindView(R.id.fragmentNews) TextView mNews;
     @BindView(R.id.fragmentSite) TextView mSite;
     @BindView(R.id.fragmentImageView) ImageView mImage;
     @BindView(R.id.fragmentUrl) TextView mUrl;
+    @BindView(R.id.contact) TextView mContact;
 
     private Datum mDatum;
 
@@ -70,26 +73,26 @@ public class NewsDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-
         View view =  inflater.inflate(R.layout.fragment_news_details, container, false);
         ButterKnife.bind(this, view);
         Picasso.get().load(mDatum.getImageUrl()).into(mImage);
-
-//        List<Datum> categories = new ArrayList<>();
-//
-//        for (Datum category: mDatum.getCategories()) {
-//            categories.add(category.getTitle());
-//        }
-
 
         mTitle.setText(mDatum.getTitle());
         mNews.setText(mDatum.getDescription());
         mSite.setText(mDatum.getSource());
         mUrl.setText(mDatum.getUrl());
 
-
-
+        mContact.setOnClickListener(this);
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v==mContact){
+            Intent contactIntent = new Intent(Intent.ACTION_DIAL);
+            startActivity(contactIntent);
+
+        }
+
+    }
 }
