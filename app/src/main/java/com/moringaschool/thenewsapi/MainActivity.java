@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     Button mButton;
     @BindView(R.id.categorySearch)
     EditText mCategory;
+    @BindView(R.id.textView)
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
