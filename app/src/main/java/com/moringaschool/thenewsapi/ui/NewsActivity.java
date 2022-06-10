@@ -1,4 +1,4 @@
-package com.moringaschool.thenewsapi;
+package com.moringaschool.thenewsapi.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
+import com.moringaschool.thenewsapi.Constants;
+import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.adapters.NewsAdapter;
 import com.moringaschool.thenewsapi.models.Datum;
 import com.moringaschool.thenewsapi.models.TheNews;

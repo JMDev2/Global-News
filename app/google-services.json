@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "613657596063",
+    "project_id": "the-news-api",
+    "storage_bucket": "the-news-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613657596063:android:39a36dc879653db92212aa",
+        "android_client_info": {
+          "package_name": "com.moringaschool.thenewsapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613657596063-qd53ccajscmce48qg6qd2o95ba5cvtt7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Mnf109yBSJP9o9Z2qoAalH7KCMRWL2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613657596063-qd53ccajscmce48qg6qd2o95ba5cvtt7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
