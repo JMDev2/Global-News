@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mSeatrchedNewsReference;
+    private ValueEventListener mSeatrchedNewsReferenceListener; //Attached to onDestroy method
 
     @BindView(R.id.submitBtn) Button mButton;
     @BindView(R.id.categorySearch) EditText mCategory;
@@ -80,6 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveNewsToFirebase(String news){
         mSeatrchedNewsReference.push().setValue(news);
+    }
+
+    //OnDestroy method that will kill the value event listener
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        mSeatrchedNewsReference.removeEventListener(mSeatrchedNewsReferenceListener);
     }
 
     public void onResume() {
