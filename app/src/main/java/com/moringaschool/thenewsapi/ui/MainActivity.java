@@ -22,7 +22,7 @@ import com.moringaschool.thenewsapi.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private DatabaseReference mSeatrchedNewsReference;
     private ValueEventListener mSeatrchedNewsReferenceListener; //Attached to onDestroy method
@@ -30,14 +30,15 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.submitBtn) Button mButton;
     @BindView(R.id.categorySearch) EditText mCategory;
     @BindView(R.id.textView) TextView mTextView;
+    @BindView(R.id.savedNewsButton) Button mSavedNewsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //instatntiating the databasereference
         mSeatrchedNewsReference = FirebaseDatabase
                 .getInstance()
-                        .getReference()
-                                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION); //Points to news code
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION); //Points to news code
 
         //Adding the value event Listener methods
         mSeatrchedNewsReference.addValueEventListener(new ValueEventListener() {
@@ -45,11 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
             //Changing the data in the node
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot newsSnapshot : snapshot.getChildren()){
+                for (DataSnapshot newsSnapshot : snapshot.getChildren()) {
                     String news = newsSnapshot.getValue().toString();
                     Log.d("news updated", "news: " + news);
                 }
             }
+
             //called when the listener is unsuccesful
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -62,22 +64,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+        mButton.setOnClickListener(this);
+        mSavedNewsButton.setOnClickListener(this); //binding the saved news button and calling the setonclick listener
+    }
+
+        @Override
             public void onClick(View v) {
                 //saving news when the button is clicked
                 if(v == mButton){
                     String news = mCategory.getText().toString();
                     saveNewsToFirebase(news);
+
+                    Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                    intent.putExtra("news", mCategory.getText().toString());
+                    startActivity(intent);
                 }
 
+                if(v == mSavedNewsButton){
+                    Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
+                    startActivity(intent);
 
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                intent.putExtra("news", mCategory.getText().toString());
-                startActivity(intent);
+
+
             }
-        });
-    }
+        };
+
+
+
 
     public void saveNewsToFirebase(String news){
         mSeatrchedNewsReference.push().setValue(news);
@@ -95,4 +108,5 @@ public class MainActivity extends AppCompatActivity {
 
         super.onResume();
     }
+
 }
