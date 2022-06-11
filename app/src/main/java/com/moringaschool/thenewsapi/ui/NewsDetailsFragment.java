@@ -13,9 +13,14 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.thenewsapi.Constants;
 import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.models.Datum;
 
@@ -40,6 +45,7 @@ public class NewsDetailsFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.fragmentImageView) ImageView mImage;
     @BindView(R.id.fragmentUrl) TextView mUrl;
     @BindView(R.id.contact) TextView mContact;
+    @BindView(R.id.saveNewsBtn) Button mSavenewsButton;
 
     private Datum mDatum;
 
@@ -83,6 +89,10 @@ public class NewsDetailsFragment extends Fragment implements View.OnClickListene
         mUrl.setText(mDatum.getUrl());
 
         mContact.setOnClickListener(this);
+
+
+        //Saving the news object button onclick listener
+        mSavenewsButton.setOnClickListener(this);
         return view;
     }
 
@@ -92,6 +102,14 @@ public class NewsDetailsFragment extends Fragment implements View.OnClickListene
             Intent contactIntent = new Intent(Intent.ACTION_DIAL);
             startActivity(contactIntent);
 
+        }
+        //Savg the news object
+        if (v == mSavenewsButton){
+            DatabaseReference newsRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_NEWS);
+            newsRef.push().setValue(mDatum);
+            Toast.makeText(getContext(), "News Saved", Toast.LENGTH_SHORT).show();
         }
 
     }
