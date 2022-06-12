@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViews"
         android:layout_width="match_parent"
-        android:layout_height="586dp"
+        android:layout_height="613dp"
         android:padding="30dp"
         app:cardBackgroundColor="#FAFDFD"
         app:cardCornerRadius="80dp">
@@ -19,7 +19,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="399dp"
-            android:layout_height="wrap_content"
+            android:layout_height="520dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="80dp"
             android:orientation="vertical"
@@ -115,6 +115,7 @@
                 android:fontFamily="@font/chewy"
                 android:text="Already have an account? Login in here!"
                 android:textAlignment="center"
+                android:textColor="#009688"
                 android:textColorHighlight="#009688"
                 android:textSize="18sp"
                 android:textStyle="bold" />
