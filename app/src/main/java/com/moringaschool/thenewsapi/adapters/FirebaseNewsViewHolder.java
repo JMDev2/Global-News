@@ -59,8 +59,8 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for ( DataSnapshot datasnapshot : snapshot.getChildren()){
-                    news.add(datasnapshot.getValue(Datum.class));
+                for ( DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    news.add(dataSnapshot.getValue(Datum.class));
                 }
                 int itemPosition = getLayoutPosition();
                 Intent intent = new Intent(mContext, NewsDetailsActivity.class);

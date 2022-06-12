@@ -38,21 +38,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/categorySearch"
-        android:layout_width="303dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Enter News Category (Sport)"
-        android:inputType="textPersonName"
-        android:singleLine="false"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.056" />
-
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="169dp"
@@ -68,7 +53,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categorySearch"
         app:layout_constraintVertical_bias="0.705" />
 
     <Button

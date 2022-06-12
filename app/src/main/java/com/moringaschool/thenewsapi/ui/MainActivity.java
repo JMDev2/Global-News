@@ -22,44 +22,18 @@ import com.moringaschool.thenewsapi.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DatabaseReference mSeatrchedNewsReference;
-    private ValueEventListener mSeatrchedNewsReferenceListener; //Attached to onDestroy method
-
-    @BindView(R.id.submitBtn) Button mButton;
-    @BindView(R.id.categorySearch) EditText mCategory;
-    @BindView(R.id.textView) TextView mTextView;
-    @BindView(R.id.savedNewsButton) Button mSavedNewsButton;
+    @BindView(R.id.submitBtn)
+    Button mButton;
+    //    @BindView(R.id.categorySearch) EditText mCategory;
+    @BindView(R.id.textView)
+    TextView mTextView;
+    @BindView(R.id.savedNewsButton)
+    Button mSavedNewsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //instatntiating the databasereference
-        mSeatrchedNewsReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION); //Points to news code
-
-        //Adding the value event Listener methods
-        mSeatrchedNewsReference.addValueEventListener(new ValueEventListener() {
-            @Override
-
-            //Changing the data in the node
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot newsSnapshot : snapshot.getChildren()) {
-                    String news = newsSnapshot.getValue().toString();
-                    Log.d("news updated", "news: " + news);
-                }
-            }
-
-            //called when the listener is unsuccesful
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -68,45 +42,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSavedNewsButton.setOnClickListener(this); //binding the saved news button and calling the setonclick listener
     }
 
-        @Override
-            public void onClick(View v) {
-                //saving news when the button is clicked
-                if(v == mButton){
-                    String news = mCategory.getText().toString();
-                    saveNewsToFirebase(news);
 
-                    Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                    intent.putExtra("news", mCategory.getText().toString());
-                    startActivity(intent);
-                }
-
-                if(v == mSavedNewsButton){
-                    Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
-                    startActivity(intent);
-
-
-
-            }
-        };
-
-
-
-
-    public void saveNewsToFirebase(String news){
-        mSeatrchedNewsReference.push().setValue(news);
-    }
-
-    //OnDestroy method that will kill the value event listener
     @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        mSeatrchedNewsReference.removeEventListener(mSeatrchedNewsReferenceListener);
+    public void onClick(View v) {
+
+        if (v == mButton) {
+            Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+            startActivity(intent);
+        }
+
+        if (v == mSavedNewsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
+            startActivity(intent);
+
+        }
     }
-
-    public void onResume() {
-
-
-        super.onResume();
-    }
-
 }
+
