@@ -75,7 +75,7 @@ public class SavedNewsActivity extends AppCompatActivity {
     @Override
     protected void onStart(){
         super.onStart();
-        mFirebaseAdapter.stopListening();
+        mFirebaseAdapter.startListening();
     }
     @Override
     protected void onStop(){

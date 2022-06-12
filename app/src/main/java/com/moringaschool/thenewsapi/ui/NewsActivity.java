@@ -115,10 +115,8 @@ public class NewsActivity extends AppCompatActivity {
     private void fetchNews(String news) {
         NewsApi client = NewsClient.getClient();
 
-
-
         //CHECK THIS LINE
-        Call<TheNews> call = client.getNews(Constants.NEWS_API_KEY, getIntent().getStringExtra("sports"), "en");
+        Call<TheNews> call = client.getNews(Constants.NEWS_API_KEY,news, "en");
 
         call.enqueue(new Callback<TheNews>() {
             @Override
