@@ -13,7 +13,7 @@
         android:layout_height="116dp"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="50dp"
-        app:srcCompat="@drawable/newss" />
+        app:srcCompat="@drawable/globalnews" />
 
 
     <TextView
@@ -33,7 +33,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViews"
         android:layout_width="match_parent"
-        android:layout_height="527dp"
+        android:layout_height="528dp"
         android:layout_marginTop="203dp"
         android:padding="30dp"
         app:cardBackgroundColor="#009688"
@@ -104,10 +104,11 @@
                 android:textAlignment="center"
                 android:textColor="#009688"
                 android:textSize="24sp"
-                app:cornerRadius="15dp" />
+                app:cornerRadius="15dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
             <TextView
-                android:id="@+id/loginInTextView"
+                android:id="@+id/registerTextView"
                 android:layout_width="311dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
