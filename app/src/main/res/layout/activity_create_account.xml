@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@android:color/white"
-                android:hint="Email"
+                android:fontFamily="@font/chewy"
+                android:hint="Email: "
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
@@ -54,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@android:color/white"
-                android:hint="Name"
+                android:fontFamily="@font/chewy"
+                android:hint="Name: "
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
@@ -67,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@android:color/white"
-                android:hint="Confirm Password"
+                android:fontFamily="@font/chewy"
+                android:hint="Password: "
                 android:inputType="textPassword"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
@@ -80,12 +83,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:hint="Password"
+                android:fontFamily="@font/chewy"
+                android:hint="Confirm Password:"
                 android:inputType="textPassword"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
                 android:textColor="#009688"
-
                 android:textSize="20sp" />
 
             <Button
@@ -95,9 +98,11 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="#009688"
+                android:fontFamily="@font/chewy"
                 android:gravity="center"
                 android:text="Submit"
                 android:textAlignment="center"
+                android:textSize="24sp"
                 app:cornerRadius="15dp" />
 
             <TextView
@@ -106,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/chewy"
                 android:text="Don't have an account? Sign up here!"
                 android:textColorHighlight="#009688"
                 android:textSize="18sp"
