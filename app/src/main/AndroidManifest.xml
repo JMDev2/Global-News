@@ -30,9 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.NewsDetailsActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".NewsDetailActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".ui.NewsActivity"
             android:exported="false" />

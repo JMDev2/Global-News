@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.confirmPasswordEditText) EditText mConfirmPassword;
     @BindView(R.id.signUpBtn) Button mRegisterButton;
 
+    @BindView(R.id.firebaseProgressBar)
+    ProgressBar mSignInProgressBar;
+    @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
+
+
     private String mName;
 
     private FirebaseAuth mAuth; //member var to get the instance of firebase Auth object
@@ -56,6 +62,21 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
 
     }
+
+    //progresss bar
+    private void showProgressBar() {
+        mSignInProgressBar.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setText("Sign Up process in Progress");
+    }
+
+    private void hideProgressBar() {
+        mSignInProgressBar.setVisibility(View.GONE);
+        mLoadingSignUp.setVisibility(View.GONE);
+    }
+
+
+
 
     @Override
     public void onClick(View v) {
@@ -84,6 +105,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validEmail = isValidEmail(email);
         boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
+
+        showProgressBar();
         if (!validEmail || !validName || !validPassword) return;
 
 
@@ -93,6 +116,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        hideProgressBar();
                         if(task.isSuccessful()){
                             Log.d(TAG, "Authentication succesful");
                                 Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
@@ -160,36 +185,17 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         };
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //    @Override
-//    public void onStart(){
+//    public void onStart() {
 //        super.onStart();
 //        mAuth.addAuthStateListener(mAuthListener);
 //    }
+//
 //    @Override
-//    public void onStop(){
+//    public void onStop() {
 //        super.onStop();
-//        mAuth.removeAuthStateListener(mAuthListener);
+//        if (mAuthListener != null) {
+//            mAuth.removeAuthStateListener(mAuthListener);
+//        }
 //    }
-
 }
