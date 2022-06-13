@@ -2,7 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
+        <item>@font/aldrich</item>
         <item>@font/amarante</item>
+        <item>@font/asset</item>
         <item>@font/chewy</item>
     </array>
 </resources>
