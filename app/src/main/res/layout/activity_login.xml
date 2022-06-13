@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFDFD"
+    tools:context=".ui.CreateAccountActivity">
+
+    <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="144dp"
+        android:layout_height="116dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/globalnews" />
+
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/chewy"
+        android:text="Welcome To Global NEWS!"
+        android:textAlignment="center"
+        android:textColor="#009688"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViews"
+        android:layout_width="match_parent"
+        android:layout_height="528dp"
+        android:layout_marginTop="203dp"
+        android:padding="30dp"
+        app:cardBackgroundColor="#009688"
+        app:cardCornerRadius="80dp">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="399dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="80dp"
+
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <TextView
+                android:id="@+id/loginIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/chewy"
+                android:text="Login In"
+                android:textAlignment="center"
+                android:textColor="#FAFDFD"
+                android:textSize="34sp" />
+
+            <EditText
+                android:id="@+id/emailLoginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:fontFamily="@font/chewy"
+                android:hint="Email: "
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@+id/passwordEditText"
+                android:padding="10dp"
+                android:textColor="#009688"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/passwordLoginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:fontFamily="@font/chewy"
+                android:hint="Password: "
+                android:inputType="textPassword"
+                android:nextFocusDown="@+id/passwordEditText"
+                android:padding="10dp"
+                android:textColor="#009688"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/loginInBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="201dp"
+                android:layout_height="73dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#FAFDFD"
+                android:fontFamily="@font/chewy"
+                android:gravity="center"
+                android:text="Submit"
+                android:textAlignment="center"
+                android:textColor="#009688"
+                android:textSize="24sp"
+                app:cornerRadius="15dp" />
+
+            <TextView
+                android:id="@+id/registerTextView"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/chewy"
+                android:text="Don't have an account? Sign up here!"
+                android:textAlignment="center"
+                android:textColor="#FAFDFD"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

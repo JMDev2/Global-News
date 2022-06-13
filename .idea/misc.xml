@@ -5,12 +5,17 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2015" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_news.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11557788944723618" />
+        <entry key="app/src/main/res/layout/activity_news.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_news_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_news_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_news_details.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/newsrecyclerview.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/newsrecyclerview.xml" value="0.25936599423631124" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.1" />
       </map>
     </option>
   </component>

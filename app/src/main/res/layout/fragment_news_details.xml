@@ -122,6 +122,16 @@
                 android:layout_marginBottom="16dp"
                 android:text="+254 700809279" />
 
+            <Button
+                android:id="@+id/saveNewsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/design_default_color_on_primary"
+                android:text="Save News"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
         </RelativeLayout>
 
     </LinearLayout>
