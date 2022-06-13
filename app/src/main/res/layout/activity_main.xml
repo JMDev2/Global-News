@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="309dp"
         android:layout_marginStart="98dp"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="98dp"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/newss" />
+        app:srcCompat="@drawable/gnews" />
 
     <TextView
         android:id="@+id/textView"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
         android:layout_marginEnd="116dp"
-        android:layout_marginBottom="386dp"
+        android:layout_marginBottom="350dp"
         android:fontFamily="@font/amarante"
         android:text="Welcome to the Global News"
         android:textColor="#FDFCFC"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/submitBtn"
@@ -57,20 +57,49 @@
 
     <Button
         android:id="@+id/savedNewsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="61dp"
-        android:layout_marginBottom="130dp"
-        android:background="@color/design_default_color_on_primary"
-        android:text="My Saved Restaurants"
-        android:textColor="@color/cardview_shadow_start_color"
-        android:visibility="visible"
+        android:layout_width="219dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="121dp"
+
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="#66FF00"
+        android:text="Open Saved News"
+        app:cornerRadius="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="229dp"
+        android:layout_height="41dp"
+        android:fontFamily="@font/chewy"
+        android:text="By Mwangi JM"
+        android:textAlignment="center"
+        android:textColor="#009688"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/savedNewsButton" />
+
+    <!--    <Button-->
+<!--        -->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginTop="61dp"-->
+<!--        android:layout_marginBottom="130dp"-->
+<!--        -->
+<!--        -->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/submitBtn" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

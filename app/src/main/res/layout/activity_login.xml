@@ -93,6 +93,7 @@
 
             <Button
                 android:id="@+id/loginInBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="201dp"
                 android:layout_height="73dp"
                 android:layout_marginStart="70dp"
@@ -104,8 +105,7 @@
                 android:textAlignment="center"
                 android:textColor="#009688"
                 android:textSize="24sp"
-                app:cornerRadius="15dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                app:cornerRadius="15dp" />
 
             <TextView
                 android:id="@+id/registerTextView"
@@ -119,7 +119,6 @@
                 android:textColor="#FAFDFD"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
 
 
         </LinearLayout>

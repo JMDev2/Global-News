@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViews"
         android:layout_width="match_parent"
-        android:layout_height="613dp"
+        android:layout_height="619dp"
         android:padding="30dp"
         app:cardBackgroundColor="#FAFDFD"
         app:cardCornerRadius="80dp">
@@ -18,10 +18,10 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="399dp"
-            android:layout_height="520dp"
+            android:layout_width="match_parent"
+            android:layout_height="528dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="30dp"
             android:orientation="vertical"
             android:padding="30dp">
 
@@ -29,7 +29,8 @@
                 android:id="@+id/signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/chewy"
                 android:text="Sign Up"
                 android:textAlignment="center"
@@ -97,7 +98,7 @@
                 android:layout_width="201dp"
                 android:layout_height="73dp"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="#009688"
                 android:fontFamily="@font/chewy"
                 android:gravity="center"
@@ -108,10 +109,10 @@
 
             <TextView
                 android:id="@+id/logInTextView"
-                android:layout_width="311dp"
+                android:layout_width="353dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/chewy"
                 android:text="Already have an account? Login in here!"
                 android:textAlignment="center"
@@ -120,24 +121,26 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+
             <ProgressBar
                 android:id="@+id/firebaseProgressBar"
-                android:layout_centerInParent="true"
+                style="@android:style/Widget.Material.Light.ProgressBar.Inverse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_marginLeft="130dp"
+                android:layout_marginBottom="10dp"
+                android:progress="25"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/loadingTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_below="@+id/firebaseProgressBar"
-
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
                 android:layout_margin="20dp"
                 android:visibility="gone" />
-
-
 
 
         </LinearLayout>

@@ -106,8 +106,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
 
-        showProgressBar();
+
         if (!validEmail || !validName || !validPassword) return;
+        showProgressBar();
 
 
         //a method to create the new user in firebase

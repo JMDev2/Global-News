@@ -2,6 +2,7 @@ package com.moringaschool.thenewsapi.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mButton.setOnClickListener(this);
         mSavedNewsButton.setOnClickListener(this); //binding the saved news button and calling the setonclick listener
+
+
+        FragmentManager fm = getSupportFragmentManager();
+        LoginConfirmationDialogFragment loginConfirmationDialogFragment = new LoginConfirmationDialogFragment();
+        loginConfirmationDialogFragment.show(fm, "Sample Fragment");
     }
 
 
