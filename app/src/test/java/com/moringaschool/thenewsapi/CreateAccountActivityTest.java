@@ -2,6 +2,7 @@ package com.moringaschool.thenewsapi;
 
 import static org.junit.Assert.assertEquals;
 
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.moringaschool.thenewsapi.ui.CreateAccountActivity;
@@ -48,6 +49,12 @@ public class CreateAccountActivityTest {
     public void validateConfirmPasswordTextViewCuontent() {
         EditText confirmPasswordTextView = createAccountActivity.findViewById(R.id.confirmPasswordEditText);
         assertEquals("Confirm Password:", confirmPasswordTextView.getHint());
+
+    }
+    @Test
+    public void validateButtonViewCuntent() {
+        Button btn = createAccountActivity.findViewById(R.id.signUpBtn);
+        assertEquals("Submit", btn.getText().toString());
 
     }
 
