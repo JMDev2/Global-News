@@ -26,6 +26,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            animationsDisabled = true
+        }
+    }
     buildTypes.each {
         it.buildConfigField 'String', 'NEWS_API_KEY', NewsApiKey
 
@@ -73,5 +79,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.firebaseui:firebase-ui-database'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+
+    //Robolectric dependencies
+    testImplementation 'org.robolectric:robolectric:4.8.1'
 
 }

@@ -19,7 +19,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="528dp"
+            android:layout_height="536dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="30dp"
             android:orientation="vertical"
@@ -44,7 +44,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="#009688"
                 android:fontFamily="@font/chewy"
-                android:hint="Email: "
+                android:hint="Email:"
                 android:inputType="textEmailAddress"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
@@ -58,7 +58,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="#009688"
                 android:fontFamily="@font/chewy"
-                android:hint="Name: "
+                android:hint="Name:"
                 android:inputType="text"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
@@ -72,7 +72,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="#009688"
                 android:fontFamily="@font/chewy"
-                android:hint="Password: "
+                android:hint="Password:"
                 android:inputType="textPassword"
                 android:nextFocusDown="@+id/passwordEditText"
                 android:padding="10dp"
@@ -138,8 +138,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/firebaseProgressBar"
                 android:layout_centerInParent="true"
-                android:textColor="@color/black"
                 android:layout_margin="20dp"
+                android:textColor="@color/black"
                 android:visibility="gone" />
 
 
