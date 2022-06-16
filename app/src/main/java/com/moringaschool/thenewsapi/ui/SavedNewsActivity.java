@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.thenewsapi.Constants;
@@ -41,7 +43,15 @@ public class SavedNewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
         ButterKnife.bind(this);
 
-        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS);
+        //Retrieving User-Specific Data
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mNewsReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_NEWS)
+                        .child(uid);
+
+
         setUpFirebaseAdapter();
         hideProgressBar();
         showNews();
