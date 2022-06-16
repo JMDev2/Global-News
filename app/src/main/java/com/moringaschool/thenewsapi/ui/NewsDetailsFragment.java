@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.thenewsapi.Constants;
@@ -105,10 +107,22 @@ public class NewsDetailsFragment extends Fragment implements View.OnClickListene
         }
         //Savg the news object
         if (v == mSavenewsButton){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
+
+
             DatabaseReference newsRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_NEWS);
-            newsRef.push().setValue(mDatum);
+                    .getReference(Constants.FIREBASE_CHILD_NEWS)
+                    .child(uid);
+
+            DatabaseReference pushRef = newsRef.push();
+            String pushId = pushRef.getKey();
+            mDatum.setPushId(pushId);
+            pushRef.setValue(mDatum);
+
+//            newsRef.push().setValue(mDatum);
             Toast.makeText(getContext(), "News Saved", Toast.LENGTH_SHORT).show();
         }
 

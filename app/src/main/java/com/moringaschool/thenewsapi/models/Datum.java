@@ -45,6 +45,7 @@ public class Datum {
     @SerializedName("categories")
     @Expose
     private List<String> categories = null;
+    private String pushId;
 //    @SerializedName("relevance_score")
 //    @Expose
 //    private Object relevanceScore;
@@ -85,6 +86,14 @@ public class Datum {
         this.source = source;
         this.categories = categories;
 //        this.relevanceScore = relevanceScore;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
     public String getUuid() {

@@ -134,7 +134,7 @@ public class NewsActivity extends AppCompatActivity {
                         showNews();
 
                     } else {
-//                        showUnsuccessfulMessage();
+                        showUnsuccessfulMessage();
                     }
                 }
 
