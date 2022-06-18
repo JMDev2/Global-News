@@ -96,6 +96,8 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
 
 
     }
+
+
 //            @Override
 //            protected void onBindViewHolder(@NonNull FirebaseNewsViewHolder firebaseRestaurantViewHolder, int position, @NonNull Datum news) {
 //                firebaseRestaurantViewHolder.bindNews(news);
@@ -149,4 +151,5 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
         super.onDestroy();
         mFirebaseAdapter.stopListening();
      }
+
 }

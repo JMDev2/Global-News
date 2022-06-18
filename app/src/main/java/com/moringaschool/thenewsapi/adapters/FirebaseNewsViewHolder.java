@@ -2,6 +2,7 @@ package com.moringaschool.thenewsapi.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,13 +21,14 @@ import com.moringaschool.thenewsapi.Constants;
 import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.models.Datum;
 import com.moringaschool.thenewsapi.ui.NewsDetailsActivity;
+import com.moringaschool.thenewsapi.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
 
@@ -62,36 +64,56 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
     //creating a valueEvent Listener to grab out
     // the current list of news from the firebase  which was passed along to the newsdeatils activity
 
+//    @Override
+//    public void onClick(View v) {
+//        final ArrayList<Datum> news = new ArrayList<>();
+//
+//
+////        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS);
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS)
+//                        .child(uid);
+//
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for ( DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    news.add(dataSnapshot.getValue(Datum.class));
+//                }
+//                int itemPosition = getLayoutPosition();
+//                Intent intent = new Intent(mContext, NewsDetailsActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("news", Parcels.wrap(news));
+//
+//                mContext.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+//    }
+
     @Override
-    public void onClick(View v) {
-        final ArrayList<Datum> news = new ArrayList<>();
-
-
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS)
-                        .child(uid);
-
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    news.add(dataSnapshot.getValue(Datum.class));
-                }
-                int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, NewsDetailsActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("news", Parcels.wrap(news));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
     }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
+    }
+
+
+
 }
