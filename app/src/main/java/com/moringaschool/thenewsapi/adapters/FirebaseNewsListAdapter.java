@@ -1,6 +1,7 @@
 package com.moringaschool.thenewsapi.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,8 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.models.Datum;
+import com.moringaschool.thenewsapi.ui.NewsDetailsActivity;
 import com.moringaschool.thenewsapi.util.ItemTouchHelperAdapter;
 import com.moringaschool.thenewsapi.util.OnStartDragListener;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,9 +74,9 @@ public class FirebaseNewsListAdapter extends FirebaseRecyclerAdapter<Datum, Fire
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull FirebaseNewsViewHolder firebaseNewsViewHolder, int position, @NonNull Datum model) {
+    protected void onBindViewHolder(final FirebaseNewsViewHolder firebaseNewsViewHolder, int position, @NonNull Datum model) {
         firebaseNewsViewHolder.bindNews(model);
-        firebaseNewsViewHolder.bindNews(model);
+
         firebaseNewsViewHolder.newsImage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -80,6 +84,15 @@ public class FirebaseNewsListAdapter extends FirebaseRecyclerAdapter<Datum, Fire
                     mOnStartDragListener.onStartDrag(firebaseNewsViewHolder);
                 }
                 return false;
+            }
+        });
+        firebaseNewsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, NewsDetailsActivity.class);
+                intent.putExtra("position", firebaseNewsViewHolder.getAdapterPosition());
+                intent.putExtra("news", Parcels.wrap(mNews));
+                mContext.startActivity(intent);
             }
         });
     }

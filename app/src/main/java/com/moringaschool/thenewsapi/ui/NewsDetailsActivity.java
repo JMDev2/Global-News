@@ -32,6 +32,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
         mNews = Parcels.unwrap(getIntent().getParcelableExtra("news"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
+
         adapterViewPager = new NewsPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mNews);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);

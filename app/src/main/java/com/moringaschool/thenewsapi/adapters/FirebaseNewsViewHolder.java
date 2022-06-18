@@ -27,6 +27,8 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 
 public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
 
     View mView;
     Context mContext;
@@ -37,7 +39,7 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
+//        itemView.setOnClickListener(this);
     }
         //binding the views and setting the views
     public void bindNews(Datum news){
