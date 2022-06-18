@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +29,15 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LoginActivity.class.getSimpleName();
 
+
+
     @BindView(R.id.registerTextView) TextView mregisterTextView;
     @BindView(R.id.loginInBtn) Button mLoginBtn;
     @BindView(R.id.emailLoginEditText) EditText mEmail;
     @BindView(R.id.passwordLoginEditText) EditText mPassword;
+    @BindView(R.id.imageIcon) ImageView mImage;
+
+    Animation rotateAnimation;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -61,7 +69,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mregisterTextView.setOnClickListener(this);
         mLoginBtn.setOnClickListener(this);
 
+        rotateAnimation();
 
+
+//        mImage.animate().rotation(300f).setDuration(5000);
+
+
+
+
+    }
+
+    private void rotateAnimation(){
+        rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        mImage.startAnimation(rotateAnimation);
     }
 
         @Override
