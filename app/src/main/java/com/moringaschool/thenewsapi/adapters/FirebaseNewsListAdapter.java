@@ -53,11 +53,13 @@ public class FirebaseNewsListAdapter extends FirebaseRecyclerAdapter<Datum, Fire
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
+        notifyItemMoved(fromPosition, toPosition);
         return false;
     }
 
     @Override
     public void onItemDismiss(int position) {
+        getRef(position).removeValue();
 
     }
 }
