@@ -31,6 +31,8 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
     View mView;
     Context mContext;
 
+    public ImageView newsImage;
+
     public FirebaseNewsViewHolder(@NonNull View itemView) {
         super(itemView);
         mView = itemView;
@@ -39,11 +41,15 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
     }
         //binding the views and setting the views
     public void bindNews(Datum news){
-        ImageView newsImage = (ImageView) mView.findViewById(R.id.imageView);
+        newsImage = (ImageView) mView.findViewById(R.id.newsImage);
+//        ImageView newsImage = (ImageView) mView.findViewById(R.id.imageView);
         TextView newsTitle = (TextView) mView.findViewById(R.id.newsTitle);
         TextView newsDescription = (TextView) mView.findViewById(R.id.newsDescription);
         TextView newsPublished = (TextView) mView.findViewById(R.id.newsPublished);
+//        Picasso.get().load(news.getImageUrl()).into(newsImage);
         Picasso.get().load(news.getImageUrl()).into(newsImage);
+
+
 
         newsTitle.setText(news.getTitle());
         newsDescription.setText(news.getDescription());
