@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.moringaschool.thenewsapi.Constants;
 import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.adapters.FirebaseNewsListAdapter;
@@ -50,12 +51,12 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
         ButterKnife.bind(this);
 
         //Retrieving User-Specific Data
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        mNewsReference = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_NEWS)
-                        .child(uid);
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//        mNewsReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_NEWS)
+//                        .child(uid);
 
 
         setUpFirebaseAdapter();
@@ -67,16 +68,24 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS).child(uid);
+
+        Query query = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_NEWS)
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
+
+
+//        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS).child(uid);
 
 
         FirebaseRecyclerOptions<Datum> options =
                 new FirebaseRecyclerOptions.Builder<Datum>()
-                        .setQuery(mNewsReference, Datum.class)
+                        .setQuery(query, Datum.class)
                         .build();
+        mFirebaseAdapter = new FirebaseNewsListAdapter(options, query, this, this);
 
 //        mFirebaseAdapter = new FirebaseRecyclerAdapter<Datum, FirebaseNewsViewHolder>(options) {
-        mFirebaseAdapter = new FirebaseNewsListAdapter(options, mNewsReference, (OnStartDragListener) this, this);
+//        mFirebaseAdapter = new FirebaseNewsListAdapter(options, mNewsReference, (OnStartDragListener) this, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
         mRecyclerView.setHasFixedSize(true);
@@ -134,4 +143,10 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mFirebaseAdapter.stopListening();
+     }
 }
