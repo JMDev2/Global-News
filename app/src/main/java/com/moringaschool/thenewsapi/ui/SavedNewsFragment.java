@@ -84,6 +84,14 @@ public class SavedNewsFragment extends Fragment implements OnStartDragListener {
         mRecyclerView.setAdapter(mFirebaseAdapter);
         mRecyclerView.setHasFixedSize(true);
 
+        mFirebaseAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                mFirebaseAdapter.notifyDataSetChanged();
+            }
+        });
+
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback((ItemTouchHelperAdapter) mFirebaseAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
