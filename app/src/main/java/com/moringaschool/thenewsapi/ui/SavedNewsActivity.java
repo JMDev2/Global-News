@@ -31,15 +31,15 @@ import com.moringaschool.thenewsapi.util.SimpleItemTouchHelperCallback;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SavedNewsActivity extends AppCompatActivity implements OnStartDragListener {
+public class SavedNewsActivity extends AppCompatActivity {
 
     //initializing the Databasereference and firebaseRecyclerAdapter member variables
-    private DatabaseReference mNewsReference;
-    private FirebaseRecyclerAdapter<Datum, FirebaseNewsViewHolder> mFirebaseAdapter;
-    private ItemTouchHelper mItemTouchHelper;
-
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    @BindView(R.id.progressbar) ProgressBar mProgressBar;
+//    private DatabaseReference mNewsReference;
+//    private FirebaseRecyclerAdapter<Datum, FirebaseNewsViewHolder> mFirebaseAdapter;
+//    private ItemTouchHelper mItemTouchHelper;
+//
+//    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+//    @BindView(R.id.progressbar) ProgressBar mProgressBar;
 
 
     @Override
@@ -47,8 +47,9 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
         super.onCreate(savedInstanceState);
 
         //settuing the activity news layout into setcontent view
-        setContentView(R.layout.activity_news);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_saved_news);
+//        ButterKnife.bind(this);
+
 
         //Retrieving User-Specific Data
 //        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -59,43 +60,43 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
 //                        .child(uid);
 
 
-        setUpFirebaseAdapter();
-        hideProgressBar();
-        showNews();
-    }
+//        setUpFirebaseAdapter();
+//        hideProgressBar();
+//        showNews();
+//    }
 
-    public  void setUpFirebaseAdapter() {
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        Query query = FirebaseDatabase.getInstance()
-                .getReference(Constants.FIREBASE_CHILD_NEWS)
-                .child(uid)
-                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
-
-
-//        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS).child(uid);
-
-
-        FirebaseRecyclerOptions<Datum> options =
-                new FirebaseRecyclerOptions.Builder<Datum>()
-                        .setQuery(query, Datum.class)
-                        .build();
-        mFirebaseAdapter = new FirebaseNewsListAdapter(options, query, this, this);
-
-//        mFirebaseAdapter = new FirebaseRecyclerAdapter<Datum, FirebaseNewsViewHolder>(options) {
-//        mFirebaseAdapter = new FirebaseNewsListAdapter(options, mNewsReference, (OnStartDragListener) this, this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mFirebaseAdapter);
-        mRecyclerView.setHasFixedSize(true);
-        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback((ItemTouchHelperAdapter) mFirebaseAdapter);
-        mItemTouchHelper = new ItemTouchHelper(callback);
-        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
-
-
-
-    }
+//    public  void setUpFirebaseAdapter() {
+//
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//
+//        Query query = FirebaseDatabase.getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_NEWS)
+//                .child(uid)
+//                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
+//
+//
+////        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS).child(uid);
+//
+//
+//        FirebaseRecyclerOptions<Datum> options =
+//                new FirebaseRecyclerOptions.Builder<Datum>()
+//                        .setQuery(query, Datum.class)
+//                        .build();
+//        mFirebaseAdapter = new FirebaseNewsListAdapter(options, query, this, this);
+//
+////        mFirebaseAdapter = new FirebaseRecyclerAdapter<Datum, FirebaseNewsViewHolder>(options) {
+////        mFirebaseAdapter = new FirebaseNewsListAdapter(options, mNewsReference, (OnStartDragListener) this, this);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        mRecyclerView.setAdapter(mFirebaseAdapter);
+//        mRecyclerView.setHasFixedSize(true);
+//        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback((ItemTouchHelperAdapter) mFirebaseAdapter);
+//        mItemTouchHelper = new ItemTouchHelper(callback);
+//        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+//
+//
+//
+//    }
 
 
 //            @Override
@@ -118,38 +119,39 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        mRecyclerView.setAdapter(mFirebaseAdapter);
 //
+////    }
+//    @Override
+//    protected void onStart(){
+//        super.onStart();
+//        mFirebaseAdapter.startListening();
 //    }
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mFirebaseAdapter.startListening();
+//    @Override
+//    protected void onStop(){
+//        super.onStop();
+//        mFirebaseAdapter.stopListening();
+//    }
+//    private void showNews(){
+//        mRecyclerView.setVisibility(View.VISIBLE);
+//    }
+//    private void hideProgressBar(){
+//        mProgressBar.setVisibility(View.GONE);
+//    }
+//
+//    @Override
+//    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+//
+//    }
+//
+//    @Override
+//    public void onPointerCaptureChanged(boolean hasCapture) {
+//        super.onPointerCaptureChanged(hasCapture);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mFirebaseAdapter.stopListening();
+//     }
+//
     }
-    @Override
-    protected void onStop(){
-        super.onStop();
-        mFirebaseAdapter.stopListening();
-    }
-    private void showNews(){
-        mRecyclerView.setVisibility(View.VISIBLE);
-    }
-    private void hideProgressBar(){
-        mProgressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mFirebaseAdapter.stopListening();
-     }
-
 }
