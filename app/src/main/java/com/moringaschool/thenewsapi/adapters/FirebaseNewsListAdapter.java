@@ -30,7 +30,7 @@ import java.util.Collections;
 
 public class FirebaseNewsListAdapter extends FirebaseRecyclerAdapter<Datum, FirebaseNewsViewHolder> implements ItemTouchHelperAdapter {
 
-    private Query mRef;
+    private DatabaseReference mRef;
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
 
@@ -40,7 +40,7 @@ public class FirebaseNewsListAdapter extends FirebaseRecyclerAdapter<Datum, Fire
 
     public FirebaseNewsListAdapter(@NonNull FirebaseRecyclerOptions<Datum> options, Query mRef, OnStartDragListener mOnStartDragListener, Context mContext) {
         super(options);
-        this.mRef = mRef;
+        this.mRef = mRef.getRef();
         this.mOnStartDragListener = mOnStartDragListener;
         this.mContext = mContext;this.mChildEventListener = mChildEventListener;
 

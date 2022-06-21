@@ -27,6 +27,7 @@ import com.moringaschool.thenewsapi.models.TheNews;
 import com.moringaschool.thenewsapi.network.NewsApi;
 import com.moringaschool.thenewsapi.network.NewsClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -129,7 +130,7 @@ public class NewsFragment extends Fragment {
 //                hideProgressBar();
                 if (response.isSuccessful()) {
                     mList = response.body().getData();
-                    mAdapter = new NewsAdapter(getActivity(), mList);
+                    mAdapter = new NewsAdapter(getActivity(), (ArrayList<Datum>) mList);
 
                     mRecyclerview.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

@@ -2,6 +2,7 @@ package com.moringaschool.thenewsapi.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Parcel;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -11,15 +12,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.thenewsapi.Constants;
 import com.moringaschool.thenewsapi.R;
 import com.moringaschool.thenewsapi.models.Datum;
 import com.moringaschool.thenewsapi.ui.NewsDetailsActivity;
+import com.moringaschool.thenewsapi.ui.NewsDetailsFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,6 +34,9 @@ import butterknife.ButterKnife;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
     private Context mContext;
     private List<Datum> dataList;
+          private ArrayList<Datum> mNews = new ArrayList<>();
+
+
 
     public NewsAdapter(Context mContext, List<Datum> dataList) {
         this.mContext = mContext;
@@ -37,7 +46,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @NonNull
     @Override
     public NewsAdapter.NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newsrecyclerview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newsrecyclerview, parent, false);
         NewsViewHolder newsViewHolder = new NewsViewHolder(view);
         return newsViewHolder;
     }
@@ -59,15 +68,41 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         @BindView(R.id.newsPublished) TextView mPublished;
 
+        private Context mContext;
+        private int mOrientation;
+//        private ArrayList<Datum> mNews = new ArrayList<>();
 
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+
+            // Determines the current orientation of the device:
+            mOrientation = itemView.getResources().getConfiguration().orientation;
+
+            // Checks if the recorded orientation matches Android's landscape configuration.
+            // if so, we create a new DetailFragment to display in our special landscape layout:
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                createDetailFragment(0);
+
+
+
+            }
+
             itemView.setOnClickListener(this);
+
+
         }
-        public void bindNews(Datum datum){
+
+        private void createDetailFragment(int position) {
+            NewsDetailsFragment newsDetailsFragment = NewsDetailsFragment.newInstance(mNews, position);
+            FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.newsDetailContainer, newsDetailsFragment);
+            ft.commit();
+        }
+
+        public void bindNews(Datum datum) {
             mTitle.setText(datum.getTitle());
             Picasso.get().load(datum.getImageUrl()).into(mImage);
             mDescription.setText(datum.getDescription());
@@ -78,12 +113,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         @Override
         public void onClick(View v) {
-            int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, NewsDetailsActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("news", Parcels.wrap(dataList));
-            mContext.startActivity(intent);
 
+            // Determines the position of the news clicked:
+            int itemPosition = getLayoutPosition();
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                createDetailFragment(itemPosition);
+            } else {
+                Intent intent = new Intent(mContext, NewsDetailsActivity.class);
+                intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                intent.putExtra(Constants.EXTRA_KEY_NEWS, Parcels.wrap(mNews));
+
+                mContext.startActivity(intent);
+
+            }
         }
     }
 }

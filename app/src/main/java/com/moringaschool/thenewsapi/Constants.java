@@ -14,6 +14,11 @@ public class Constants {
     public static final String PREFERENCES_NEWS_KEY = "news";
 
     public static final String FIREBASE_QUERY_INDEX = "index";
+    public static final String SOURCE_FIND = "find";
+
+    public static final String EXTRA_KEY_POSITION = "position";
+    public static final String EXTRA_KEY_NEWS = "news";
+
 
 
 
