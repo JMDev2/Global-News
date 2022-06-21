@@ -9,10 +9,12 @@ import com.moringaschool.thenewsapi.models.Datum;
 import com.moringaschool.thenewsapi.models.TheNews;
 import com.moringaschool.thenewsapi.ui.NewsDetailsFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsPagerAdapter extends FragmentPagerAdapter {
     private List<Datum> mDatum;
+//    private ArrayList<Datum> mNews = new ArrayList<>();
 
 
     public NewsPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Datum> news) {
@@ -23,7 +25,7 @@ public class NewsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position){
-        return NewsDetailsFragment.newInstance(mDatum.get(position));
+        return NewsDetailsFragment.newInstance(mDatum, position);
     }
 
     @Override

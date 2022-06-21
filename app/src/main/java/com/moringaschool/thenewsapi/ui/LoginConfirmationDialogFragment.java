@@ -20,7 +20,7 @@ public class LoginConfirmationDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("The Global News");
         builder.setMessage("Welcome to the Global News App!");
 

@@ -50,30 +50,43 @@ public class NewsDetailsFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.saveNewsBtn) Button mSavenewsButton;
 
     private Datum mDatum;
+    private List<Datum> mNewsDeails;
+    private int mPosition;
+
+
 
     public NewsDetailsFragment(){
         //empty public construtor
     }
 
-    //used instead of constructor and returns a new instance of newsdetails fragment
-    public static NewsDetailsFragment newInstance(Datum news){
-        NewsDetailsFragment newsDetailsFragment = new NewsDetailsFragment(); //instance of newsdetailsfragment
-
+    public static NewsDetailsFragment newInstance(List<Datum> news, int position){
+        NewsDetailsFragment newsDetailsFragment = new NewsDetailsFragment();
         Bundle args = new Bundle();
-        //Parceler library
-        args.putParcelable("news", Parcels.wrap(news));
+        args.putParcelable(Constants.EXTRA_KEY_NEWS, Parcels.wrap(news));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);    
         newsDetailsFragment.setArguments(args);
         return newsDetailsFragment;
     }
+
+    //used instead of constructor and returns a new instance of newsdetails fragment
+//    public static NewsDetailsFragment newInstance(Datum news){
+//        NewsDetailsFragment newsDetailsFragment = new NewsDetailsFragment(); //instance of newsdetailsfragment
+//
+//        Bundle args = new Bundle();
+//        //Parceler library
+//        args.putParcelable("news", Parcels.wrap(news));
+//        newsDetailsFragment.setArguments(args);
+//        return newsDetailsFragment;
+//    }
 
     //onCreate method, called when the fragment is created. Used to unwrap
 //    our news object from the arguments in the newInstance() method
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        assert getArguments() != null;
-        mDatum = Parcels.unwrap(getArguments().getParcelable("news"));
+        mNewsDeails = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_NEWS));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mDatum = mNewsDeails.get(mPosition);
     }
 
     //onCreateView used to get the images and texts
