@@ -27,9 +27,14 @@ $ sudo snap install android-studio --classic
 	
 ## Features
 
-* Authenticating the Location
-* ListView
-* About Us and the contacts
+* User Authenticating
+* Searching of News based on categories ie Sports
+* URL redirections
+* RecyclerViews
+* Firebase Authentication
+* Saving and retyrieving News on Firebase
+* Gestures and animations
+* Deleting of favorites/saved News
 
 
 ## Dependencies
