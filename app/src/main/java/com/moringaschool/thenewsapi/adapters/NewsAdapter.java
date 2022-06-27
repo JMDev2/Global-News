@@ -33,32 +33,31 @@ import butterknife.ButterKnife;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
     private Context mContext;
-    private List<Datum> dataList;
+//    private List<Datum> dataList;
           private ArrayList<Datum> mNews = new ArrayList<>();
 
 
-
-    public NewsAdapter(Context mContext, List<Datum> dataList) {
+    public NewsAdapter(Context mContext, ArrayList<Datum> mNews) {
         this.mContext = mContext;
-        this.dataList = dataList;
+        this.mNews = mNews;
     }
 
     @NonNull
     @Override
     public NewsAdapter.NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newsrecyclerview, parent, false);
-        NewsViewHolder newsViewHolder = new NewsViewHolder(view);
+        NewsViewHolder newsViewHolder = new NewsViewHolder(view, mNews);
         return newsViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull NewsAdapter.NewsViewHolder holder, int position) {
-        holder.bindNews(dataList.get(position));
+        holder.bindNews(mNews.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return mNews.size();
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -70,13 +69,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         private Context mContext;
         private int mOrientation;
-//        private ArrayList<Datum> mNews = new ArrayList<>();
+        private ArrayList<Datum> mNews = new ArrayList<>();
 
 
-        public NewsViewHolder(@NonNull View itemView) {
+        public NewsViewHolder(@NonNull View itemView, ArrayList<Datum> news) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+            mNews = news;
 
             // Determines the current orientation of the device:
             mOrientation = itemView.getResources().getConfiguration().orientation;
