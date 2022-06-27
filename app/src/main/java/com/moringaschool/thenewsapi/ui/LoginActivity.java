@@ -1,9 +1,11 @@
 package com.moringaschool.thenewsapi.ui;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -75,9 +78,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //        mImage.animate().rotation(300f).setDuration(5000);
 
 
-
-
     }
+
+
 
     private void rotateAnimation(){
         rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate);

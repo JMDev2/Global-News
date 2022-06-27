@@ -1,19 +1,23 @@
 package com.moringaschool.thenewsapi.ui;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -40,6 +44,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.firebaseProgressBar)
     ProgressBar mSignInProgressBar;
     @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
+    @BindView(R.id.cameraImageView)
+    ImageView mImage;
 
 
     private String mName;
@@ -63,6 +69,29 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         createAuthStateListener(); //calling the method to authenticate the user
 
+        mImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.with(CreateAccountActivity.this)
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start(100);
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 100 && resultCode == RESULT_OK){
+            Uri imageUri = data.getData();
+            mImage.setImageURI(imageUri);
+        }else {
+            Toast.makeText(this, "Something went Wrong!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

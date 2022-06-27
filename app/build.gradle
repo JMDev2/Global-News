@@ -38,6 +38,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation 'com.google.firebase:firebase-analytics:21.0.0'
 
@@ -84,5 +85,7 @@ dependencies {
 
     //Robolectric dependencies
     testImplementation 'org.robolectric:robolectric:4.8.1'
+
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 
 }
